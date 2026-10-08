@@ -223,12 +223,116 @@
 
     <script>
         function openAI() {
-            alert(
-                "The AI Wellness Guide is coming next. " +
-                "We will connect the AI after the app foundation is working."
-            );
-        }
-    </script>
+    document.body.innerHTML = `
+        <div style="
+            min-height:100vh;
+            background:#dff3ff;
+            font-family:Arial,sans-serif;
+            padding:20px;
+        ">
 
-</body>
-</html>
+            <div style="
+                background:#ffffff;
+                padding:20px;
+                border-radius:18px;
+                max-width:600px;
+                margin:auto;
+                box-shadow:0 4px 14px rgba(0,0,0,0.08);
+            ">
+
+                <h2 style="margin-bottom:8px;">
+                    🤖 Joseph Aria AI Wellness Guide
+                </h2>
+
+                <p style="line-height:1.5;margin-bottom:20px;">
+                    Ask questions about Reflexology and general wellness.
+                </p>
+
+                <div id="chatBox" style="
+                    min-height:180px;
+                    background:#f7f7f7;
+                    border-radius:12px;
+                    padding:15px;
+                    margin-bottom:15px;
+                ">
+                    <p>
+                        <strong>AI Guide:</strong>
+                        Welcome. How can I help you learn about
+                        Reflexology and wellness?
+                    </p>
+                </div>
+
+                <input
+                    id="userQuestion"
+                    type="text"
+                    placeholder="Ask your question..."
+                    style="
+                        width:100%;
+                        padding:15px;
+                        border:1px solid #ccc;
+                        border-radius:10px;
+                        font-size:16px;
+                        margin-bottom:10px;
+                    "
+                >
+
+                <button
+                    onclick="sendQuestion()"
+                    style="
+                        width:100%;
+                        padding:15px;
+                        background:#f2c94c;
+                        color:#111111;
+                        border:none;
+                        border-radius:10px;
+                        font-size:16px;
+                        font-weight:bold;
+                    "
+                >
+                    Send Question
+                </button>
+
+                <button
+                    onclick="location.reload()"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin-top:10px;
+                        background:#ffffff;
+                        color:#111111;
+                        border:1px solid #ccc;
+                        border-radius:10px;
+                    "
+                >
+                    ← Back to Home
+                </button>
+
+            </div>
+        </div>
+    `;
+}
+
+function sendQuestion() {
+    const question = document.getElementById("userQuestion").value.trim();
+
+    if (!question) {
+        alert("Please enter a question first.");
+        return;
+    }
+
+    const chatBox = document.getElementById("chatBox");
+
+    chatBox.innerHTML += `
+        <p style="margin-top:15px;">
+            <strong>You:</strong> ${question}
+        </p>
+
+        <p style="margin-top:10px;">
+            <strong>AI Guide:</strong>
+            Thank you for your question. The AI knowledge system
+            will be connected next.
+        </p>
+    `;
+
+    document.getElementById("userQuestion").value = "";
+}
